@@ -29,7 +29,12 @@ async function fetchCountryData(countryName) {
 
 function displayCountryInfo(countryData, container) {
     const languages = Object.values(countryData.languages).join(', ')
-    const currencies = 
+    const currencyCode = Object.keys(countryData.currencies)[0] 
+    const currency = countryData.currencies[currencyCode]
+    const currencyName = currency.name
+    const currencySymbol = currency.symbol
+
+const demonym = countryData.demonyms?.eng? `${countryData.demonyms.eng.m}`: 'Not Available'
 
     container.innerHTML = `
     <div class="country-name">${countryData.name.common}</div>
@@ -38,11 +43,11 @@ function displayCountryInfo(countryData, container) {
     <p><strong>Region:</strong>${countryData.region}</p>
     <p><strong>Population:</strong>${countryData.population.toLocaleString()}</p>
     <p><strong>Languages:</strong>${languages}</p>
-    <p><strong>Capital:</strong></p>
-    <p><strong>Capital:</strong></p>
-    <p><strong>Capital:</strong></p>
-    <p><strong>Capital:</strong></p>
-    <p><strong>Capital:</strong></p>
+    <p><strong>Currencies:</strong>${currencyName} (${currencySymbol})</p>
+    <p><strong>Demonyms:</strong>${demonym}</p>
+    <p><strong>Independent:</strong>${countryData.independent?'Yes':'No'}</p>
+    <p><strong>UN Member:</strong>${countryData.unMember?'Yes':'No'}</p>
+    <p><strong>Google Map:</strong><a href=${countryData.maps.googleMaps}>Click Here</a></p>
     <p><strong>Capital:</strong></p>
     
     `
