@@ -25,5 +25,5 @@ app.get('/search', async (req, res) => {
 
 
 app.listen(port, (req, res) => { 
-    console.log(`Server running listening on ${port}`)
+    console.log(`Server running on http://localhost:${port}`)
 })
