@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Altas World Map</h1>
+    
+    <div class="wrapper">
+        <!--Search section-->
+        <div class="section-section">
+            <input type="text" id="countyInput" placeholder="Enter a Country Name.....">
+
+            <button id="searchButton">Search</button>
+            <p id="message"> </p>
+        </div>
+        <!-- Main content -->
+        <div class="main-content">
+            <div id="results" class="results-container"></div>
+        </div>
+        <!-- Images section-->
+        <div class="image-section">
+            <div id="flageContainer" class="image-container"></div>
+            <div id="coatOfArmsContainer" class="image-container"></div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
