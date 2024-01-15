@@ -31,10 +31,14 @@ async function fetchCountryData(countryName) {
 
 function displayCountryInfo(countryData, container) {
     const languages = Object.values(countryData.languages).join(', ')
+
     const currencyCode = Object.keys(countryData.currencies)[0] 
     const currency = countryData.currencies[currencyCode]
     const currencyName = currency.name
     const currencySymbol = currency.symbol
+
+    const flagUrl = countryData.flags.png
+    const flagAlt = countryData.flags.alt? countryData.flags.alt:`Flag of ${countryData.name.commonName}`
 
 const demonym = countryData.demonyms?.eng? `${countryData.demonyms.eng.m}`: 'Not Available'
 
@@ -52,4 +56,5 @@ const demonym = countryData.demonyms?.eng? `${countryData.demonyms.eng.m}`: 'Not
     <p><strong>Google Map:</strong><a href=${countryData.maps.googleMaps}>Click Here</a></p>
 
     `
+    document.getElementById('flagContainer').innerHTML = flagUrl ? `<p><strong>Flag:</strong></p><img src="${flagUrl}" alt="{flagAlt}">`: ''
 }
