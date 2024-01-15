@@ -9,8 +9,12 @@ app.get('/search', async (req, res) => {
     try {
         const countryName = req.query.country
         const apiResponse = await fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+        if (!apiResponse.ok) { 
+            throw new Error(`HTTP error status: ${apiResponse.status}`)
+        }
         const data = await apiResponse.json()
         console.log(data)
+        res.send(data)
         // Try something
     } catch (error) {
         res.status(500).send({ message: error.message });
@@ -18,3 +22,8 @@ app.get('/search', async (req, res) => {
         
     }
 } )
+
+
+app.listen(port, (req, res) => { 
+    console.log(`Server running listening on ${port}`)
+})
