@@ -8,13 +8,15 @@ document.getElementById('searchButton').addEventListener('click', () => {
 async function fetchCountryData(countryName) {
     const messageElement = document.getElementById('message')
     const resultsElement = document.getElementById('results')
+    console.log(resultsElement)
 
 
     try {
         const response = await fetch(`/search?country=${countryName}`)
-        const data = response.json()
+        const data = await response.json()
+        // console.log(data,'results')
 
-        if (data.length ===1) {
+        if (data.length===1) {
             displayCountryInfo(data[0],resultsElement)
         } else {
             displayCountryList(data,resultsElement)
@@ -36,9 +38,9 @@ function displayCountryInfo(countryData, container) {
 
 const demonym = countryData.demonyms?.eng? `${countryData.demonyms.eng.m}`: 'Not Available'
 
-    container.innerHTML = `
+    container.innerHTML =`
     <div class="country-name">${countryData.name.common}</div>
-    <div class="country-name">${countryData.name.official}</div>
+    <div class="official-name">${countryData.name.official}</div>
     <p><strong>Capital:</strong>${countryData.capital? countryData.capital.join(','): 'Not Available'}</p>
     <p><strong>Region:</strong>${countryData.region}</p>
     <p><strong>Population:</strong>${countryData.population.toLocaleString()}</p>
@@ -48,8 +50,6 @@ const demonym = countryData.demonyms?.eng? `${countryData.demonyms.eng.m}`: 'Not
     <p><strong>Independent:</strong>${countryData.independent?'Yes':'No'}</p>
     <p><strong>UN Member:</strong>${countryData.unMember?'Yes':'No'}</p>
     <p><strong>Google Map:</strong><a href=${countryData.maps.googleMaps}>Click Here</a></p>
-    <p><strong>Capital:</strong></p>
-    
+
     `
-    
 }
