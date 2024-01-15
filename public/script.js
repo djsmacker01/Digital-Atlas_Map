@@ -10,7 +10,7 @@ async function fetchCountryData(countryName) {
     try {
         const response = await fetch(`/search?country=${countryName}`)
         const data = response.json()
-        console.log(data)
+        // console.log(data)
     } catch (error) {
         console.log(error)
         messageElement.textContent = "No result Found. Please check your spelling and try again."
