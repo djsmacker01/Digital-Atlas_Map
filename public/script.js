@@ -79,5 +79,9 @@ function displayCountryList(countryData, container) {
     let listHtml = `<p>
     Multiple resuls returned. Please choose one of the under listed
     countries below to view the country of your choice
-    </p>`
+    </p><ul>`
+
+    listHtml += countries.map(country => `<li class='country-item' data-country='${country.name.common}'>
+    ${country.name.common}</li>`).join(' ');
+    listHtml = `</ul>`;
 }
