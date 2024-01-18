@@ -41,6 +41,7 @@ function displayCountryInfo(countryData, container) {
     const currencyName = currency.name
     const currencySymbol = currency.symbol
 
+    const flagEmoji = countryData.flag
     const flagUrl = countryData.flags.png
     const flagAlt = countryData.flags.alt? countryData.flags.alt:`Flag of ${countryData.name.commonName}`
     const coatOfArmsUrl = countryData.coatOfArms.png
@@ -54,7 +55,7 @@ function displayCountryInfo(countryData, container) {
         
     }
     container.innerHTML =`
-    <div class="country-name">${countryData.name.common}</div>
+    <div class="country-name">${countryData.name.common} ${flagEmoji}</div>
     <div class="official-name">${countryData.name.official}</div>
     <p><strong>Capital:</strong>${countryData.capital? countryData.capital.join(','): 'Not Available'}</p>
     <p><strong>Region:</strong>${countryData.region}</p>
@@ -67,6 +68,8 @@ function displayCountryInfo(countryData, container) {
     <p><strong>Google Map:</strong><a href=${countryData.maps.googleMaps}>Click Here</a></p>
 
     `
+
+    container.innerHTML = listHtml
     document.getElementById('flagContainer').innerHTML = flagUrl ? `<p><strong>Flag:</strong></p><img src="${flagUrl}" alt="${flagAlt}">` : ''
     document.getElementById('coatOfArmsContainer').innerHTML = coatOfArmsUrl? `<p><strong>Coat of Arms: </strong></p><img src="${coatOfArmsUrl}" alt="Coat of Arms of ${countryData.name.common}">` : ''
 }
