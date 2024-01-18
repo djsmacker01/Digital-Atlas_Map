@@ -8,7 +8,10 @@ document.getElementById('searchButton').addEventListener('click', () => {
 async function fetchCountryData(countryName) {
     const messageElement = document.getElementById('message')
     const resultsElement = document.getElementById('results')
+    const flagElement = document.getElementById('flagContainer');
+    const armsElement = document.getElementById('coatOfArmsContainer');
     // console.log(resultsElement)
+      messageElement.textContent = "";
 
 
     try {
@@ -16,9 +19,12 @@ async function fetchCountryData(countryName) {
         const data = await response.json()
         // console.log(data,'results')
 
-        if (data.length===1) {
+        if (data.length === 1) {
+            resultsElement.style.display = 'block';
             displayCountryInfo(data[0],resultsElement)
         } else {
+            flagElement.style.display = 'none';
+            armsElement.style.display = 'none';
             displayCountryList(data,resultsElement)
             
         }
@@ -26,14 +32,18 @@ async function fetchCountryData(countryName) {
     } catch (error) {
         console.log(error)
         messageElement.textContent = "No result Found. Please check your spelling and try again."
+        resultsElement.style.display = 'none';
+        flagElement.style.display = 'none';
+        armsElement.style.display = 'none';
     }
+
 }
 
 function displayCountryInfo(countryData, container) {
     const flagElement = document.getElementById('flagContainer')
     const armsElement = document.getElementById('coatOfArmsContainer')
 
-    console.log(armsElement)
+    // console.log(armsElement)
     const languages = Object.values(countryData.languages).join(', ')
 
     const currencyCode = Object.keys(countryData.currencies)[0] 
@@ -74,13 +84,12 @@ function displayCountryInfo(countryData, container) {
 }
 
 
-function displayCountryList(countryData, container) {
-    let listHtml = `<p>
-    Multiple resuls returned. Please choose one of the under listed
+function displayCountryList(countries, container) {
+    let listHtml = `<p>Multiple results returned. Please choose one of the under listed
     countries below to view the country of your choice
     </p><ul>`
 
-    listHtml += countries.map(country => `<li class='country-item' data-country='${country.name.common}'>
+    listHtml += countries.map(country => `<li class="country-item" data-country="${country.name.common}">
     ${country.name.common}</li>`).join(' ');
     listHtml = `</ul>`;
 
