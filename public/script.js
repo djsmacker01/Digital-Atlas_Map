@@ -73,3 +73,11 @@ function displayCountryInfo(countryData, container) {
     document.getElementById('flagContainer').innerHTML = flagUrl ? `<p><strong>Flag:</strong></p><img src="${flagUrl}" alt="${flagAlt}">` : ''
     document.getElementById('coatOfArmsContainer').innerHTML = coatOfArmsUrl? `<p><strong>Coat of Arms: </strong></p><img src="${coatOfArmsUrl}" alt="Coat of Arms of ${countryData.name.common}">` : ''
 }
+
+
+function displayCountryList(countryData, container) {
+    let listHtml = `<p>
+    Multiple resuls returned. Please choose one of the under listed
+    countries below to view the country of your choice
+    </p>`
+}
