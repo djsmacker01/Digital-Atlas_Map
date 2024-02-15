@@ -1,4 +1,5 @@
 **Country Atlas Map**
+
 Welcome to the Country Atlas, a web-based application that offers an immersive experience to explore information about different countries around the world. This digital atlas provides a comprehensive view of various details for each selected country, fostering an educational journey into the diverse aspects of our global community.
 
 **Features**
