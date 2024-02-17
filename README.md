@@ -34,3 +34,6 @@ Getting Started
 To start exploring the Country Atlas, simply visit [link-to-your-application]. Enter the name of a country in the search bar, and embark on a journey of discovery!
 
 Feel free to contribute or provide feedback to make the Country Atlas even more informative and engaging for users. Happy exploring!
+![4](https://github.com/djsmacker01/Digital-Atlas_Map/assets/48442354/b502e570-3a66-492e-8b83-8c230fd1de39)
+
+
